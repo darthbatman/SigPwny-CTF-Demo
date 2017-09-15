@@ -1,0 +1,24 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 GOAL: Get actual flag from following scrambled flag: dXF1e3QndXZ1IHVzcXJ3JHVydHdxc3UjdXB3JHV2cXF0dXckdSNxcnRzdXB0IXUm\
+in crackme.py.py\
+\
+Go from last operation to first operation to reverse flag scramble\
+\
+Base64Endode: base64.b64encode(flag)\
+Opposite: base64.b64decode(scrambled_flag)\
+\
+For every single character in the flag, convert to ascii, bitwise xor with 0x42, then convert back to character, then join all characters together with nothing between characters: \'91\'92.join(chr(ord(char) ^ 0x42) for char in flag)\
+To reverse xor, xor again\
+Opposite: \'91\'92.join(chr(ord(char)^ 0x42) for char in scrambled_flag)\
+\
+Convert to unicode, then hexlify (maybe converts every character to corresponding hexadecimal value): binascii.hexlify(bytes(flag.encode(\'91utf-8\'92))\
+Opposite: binascii.unhexlify(scrambled_flag)\
+\
+Similar to caesar cipher (rot-13) encoding (common cipher): codecs.encode(flag, 'rot13')\
+Opposite: codecs.decode(scrambled_flag, 'rot13')}
